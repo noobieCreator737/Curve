@@ -1,6 +1,7 @@
 var playbutton = document.getElementById("play");
 let forwardBtn = document.getElementById("forward");
 let rewindBtn = document.getElementById("rewind");
+let title = document.getElementById("title");
 var video = document.getElementById("video");
 const values = 10;
 
@@ -26,3 +27,6 @@ forwardBtn.addEventListener('click',()=>{
 rewindBtn.addEventListener('click',()=>{
     video.currentTime -= values;
 });
+
+const videoSource = video.currentSrc || video.src;
+title.innerText = videoSource.currentSrc.split('/').pop();
