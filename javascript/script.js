@@ -28,5 +28,13 @@ rewindBtn.addEventListener('click',()=>{
     video.currentTime -= values;
 });
 
-const videoSource = video.currentSrc || video.src;
-title.innerText = videoSource.currentSrc.split('/').pop();
+function videoFileName(){
+    let videoSource = video.currentSrc;
+    let videoExt = videoSource.split("/").pop();
+    let videoName = videoExt.substring(0, videoExt.lastIndexOf('.'));
+    const videoNm = decodeURIComponent(videoName);
+    title.innerText = videoNm;
+}
+
+
+videoFileName();
