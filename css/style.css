@@ -4,6 +4,7 @@
     margin: 0;
     box-sizing: border-box;
     padding: 0;
+    cursor: url('/media/image/arrow-pointer-solid-full.svg'), auto;
 }
 
 .videoContainer{
