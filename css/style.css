@@ -30,7 +30,6 @@
     bottom: 0;
     padding: 0.8rem;
     box-sizing: border-box;
-
 }
 
 .controls button{
@@ -95,4 +94,16 @@
 
 .fa-gear{
     color: white;
+}
+
+.forwardSeq{
+    display: none;
+    position: fixed;
+    color: red;
+    right:90px;
+    font-size: 50px;
+    top: 250px;
+    width: 100vw;
+    height: 100vh;
+    justify-content: end;
 }
