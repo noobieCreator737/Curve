@@ -97,7 +97,7 @@
 }
 
 .forwardSeq{
-    display: none;
+    pointer-events: none;
     position: fixed;
     color: red;
     right:90px;

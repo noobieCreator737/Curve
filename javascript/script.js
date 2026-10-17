@@ -1,10 +1,11 @@
 var playbutton = document.getElementById("play");
-let forwardBtn = document.getElementById("forward");
+const forwardBtn = document.getElementById("forward");
 let rewindBtn = document.getElementById("rewind");
 let title = document.getElementById("title");
 var video = document.getElementById("video");
 const forwardSeq = document.getElementById("forwardSeq");
-const values = 10;
+
+const values = 5;
 
 const icon = document.createElement('i');
 
@@ -40,23 +41,45 @@ playbutton.addEventListener("click",(e)=>{
 });
 
 forwardBtn.addEventListener('click',()=>{
+    
     video.currentTime += values;
     
-    // const styeCheck = getComputedStyle();
-    if(styleCheckFunction().check(forwardSeq) === "flex"){
-        alert("Hello forward sequence is active")
-    }
-
-    forwardSeq.style.display = "flex";
+    
+    animateforward();
 });
+
 
 rewindBtn.addEventListener('click',()=>{
     video.currentTime -= values;
 });
 
-function styleCheckFunction(){
-    const value = null;
-    let check = window.getComputedStyle(value).display;
+function animateforward(){
+    forwardSeq.style.display = "flex";
+    forwardSeq.animate([
+        {transform: 'translateX(0px)', opacity: 1},
+        { transform: 'translateX(20px)', opacity: 0.5, offset: 0.5 }, 
+  
+        { transform: 'translateX(55px)', opacity: 1 }
+    ], {
+            // Animation settings
+            duration: 1000,           // 1 second
+            iterations: 1,     // Loop forever
+            direction: 'normal',   // Go back and forth
+            easing: 'ease-in-out'     // Timing function
+    }).onfinish = () => {
+        forwardSeq.style.display = "none"; // Automatically hide it when finished
+    };
+}
+
+// animateforward()
+
+function styleCheckFunction(element,value){
+    if(!element) return;
+    const check = window.getComputedStyle(element);
+    if(check.display.includes(value) ){
+        alert("Hello world");
+        return;
+    }
 }
 
 function videoFileName(){
@@ -73,6 +96,15 @@ function clipSkip(){
 
 
 
-clipSkip();
 
+clipSkip();
 videoFileName();
+
+
+// Commented Codes
+// if(styleCheckFunction(forwardSeq).check.display === "flex"){
+//         alert("Hello forward sequence is active")
+//     }
+
+// console.log( video.currentTime += video.currentTime + values);
+
