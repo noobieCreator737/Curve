@@ -1,9 +1,13 @@
+// Imports
+import * as Anim from './animation.js';
+
+// Variables
 var playbutton = document.getElementById("play");
 const forwardBtn = document.getElementById("forward");
 let rewindBtn = document.getElementById("rewind");
 let title = document.getElementById("title");
 var video = document.getElementById("video");
-const forwardSeq = document.getElementById("forwardSeq");
+export const forwardSeq = document.getElementById("forwardSeq");
 
 const values = 5;
 
@@ -45,7 +49,7 @@ forwardBtn.addEventListener('click',()=>{
     video.currentTime += values;
     
     
-    animateforward();
+    Anim.animateforward();
 });
 
 
@@ -53,23 +57,7 @@ rewindBtn.addEventListener('click',()=>{
     video.currentTime -= values;
 });
 
-function animateforward(){
-    forwardSeq.style.display = "flex";
-    forwardSeq.animate([
-        {transform: 'translateX(0px)', opacity: 1},
-        { transform: 'translateX(20px)', opacity: 0.5, offset: 0.5 }, 
-  
-        { transform: 'translateX(55px)', opacity: 1 }
-    ], {
-            // Animation settings
-            duration: 1000,           // 1 second
-            iterations: 1,     // Loop forever
-            direction: 'normal',   // Go back and forth
-            easing: 'ease-in-out'     // Timing function
-    }).onfinish = () => {
-        forwardSeq.style.display = "none"; // Automatically hide it when finished
-    };
-}
+
 
 // animateforward()
 
